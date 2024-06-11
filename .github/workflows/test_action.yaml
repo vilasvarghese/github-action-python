@@ -1,24 +1,16 @@
-# .github/workflows/test_action.yaml
-name: Test Action
-on: 
+name: Hello World Workflow
+
+on:   
   push:
     branches:
       - main
   workflow_dispatch: 
 
 jobs:
-  get-num-square:
-    runs-on: ubuntu-latest
-    name: Return's the number square
+  say-hello:  # Name of the job
+    name: Print Hello World  # Descriptive name for the job
+    runs-on: ubuntu-latest  # Specify the runner environment (operating system)
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Fetch num squared
-        id: get_square
-        uses: ./ # Uses an action in the root directory
-        # or use a released Github Action
-        # uses: shipyard/github-action/fetch-shipyard-env@1.0.0
-        with:
-          num: 11
-      - name: Print the square
-        run: echo "${{ steps.get_square.outputs.num_squared }}"
+      - uses: actions/checkout@v3  # Built-in action to checkout the repository code
+      - name: Say Hello  # Step to print the message
+        run: echo "Hello, World!"  # Command to print the message
